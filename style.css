@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ─── CSS Variables ─────────────────────────────────────────────────── */
+:root {
+  --bg:          #0a0c10;
+  --surface:     #111318;
+  --surface-2:   #181b22;
+  --border:      #2a2e3a;
+  --accent-1:    #00e5ff;   /* cyan  – Snake */
+  --accent-2:    #ff3d6b;   /* red   – Gun   */
+  --accent-3:    #ffe135;   /* gold  – Water */
+  --text:        #e8ecf4;
+  --text-muted:  #6b7280;
+  --radius:      12px;
+  --glow-cyan:   0 0 18px rgba(0,229,255,.45);
+  --glow-red:    0 0 18px rgba(255,61,107,.45);
+}
+
+/* ─── Reset & Base ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,229,255,.12) 0%, transparent 70%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.02) 39px,
+      rgba(255,255,255,.02) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.02) 39px,
+      rgba(255,255,255,.02) 40px
+    );
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────── */
+header {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 20px auto 0;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  border-radius: 2px;
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  letter-spacing: .06em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--accent-1) 0%, #a0f4ff 40%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 0 28px rgba(0,229,255,.35));
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+header div {
+  margin-top: 6px;
+  font-size: .9rem;
+  color: var(--accent-3);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+
+/* ─── Main ──────────────────────────────────────────────────────────── */
+main {
+  width: min(560px, 92%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-bottom: 60px;
+  animation: fadeUp .5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Input ─────────────────────────────────────────────────────────── */
+input#name {
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  outline: none;
+  transition: border-color .25s, box-shadow .25s;
+}
+
+input#name::placeholder { color: var(--text-muted); font-weight: 500; }
+
+input#name:focus {
+  border-color: var(--accent-1);
+  box-shadow: var(--glow-cyan), inset 0 0 0 1px rgba(0,229,255,.08);
+}
+
+/* ─── Hello Tag ─────────────────────────────────────────────────────── */
+#hellotag h3 {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, rgba(0,229,255,.07), rgba(0,229,255,.02));
+  border: 1.5px solid rgba(0,229,255,.2);
+  border-radius: var(--radius);
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--accent-1);
+  letter-spacing: .02em;
+  animation: fadeUp .35s ease both;
+}
+
+/* ─── Select ────────────────────────────────────────────────────────── */
+select#Choice {
+  width: 100%;
+  padding: 14px 44px 14px 20px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  transition: border-color .25s, box-shadow .25s;
+}
+
+select#Choice:focus {
+  border-color: var(--accent-1);
+  box-shadow: var(--glow-cyan);
+}
+
+select#Choice option {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* ─── Button ────────────────────────────────────────────────────────── */
+button#startbtn {
+  position: relative;
+  width: 100%;
+  padding: 16px 24px;
+  background: transparent;
+  border: 2px solid var(--accent-1);
+  border-radius: var(--radius);
+  color: var(--accent-1);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: .18em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color .25s, box-shadow .25s;
+}
+
+button#startbtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-1);
+  transform: translateY(100%);
+  transition: transform .28s cubic-bezier(.22,1,.36,1);
+  z-index: 0;
+}
+
+button#startbtn span,
+button#startbtn {
+  position: relative;
+  z-index: 1;
+}
+
+button#startbtn:hover {
+  color: var(--bg);
+  box-shadow: var(--glow-cyan);
+}
+
+button#startbtn:hover::before {
+  transform: translateY(0);
+}
+
+button#startbtn:active {
+  transform: scale(.98);
+}
+
+/* ─── Result Card ───────────────────────────────────────────────────── */
+#result {
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  line-height: 1.55;
+  min-height: 0;
+  transition: all .3s ease;
+}
+
+#result:not(:empty) {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--accent-1);
+  animation: slideIn .35s cubic-bezier(.22,1,.36,1) both;
+}
+
+#result b { color: var(--text); font-weight: 700; }
+
+/* ─── Final Result Card ─────────────────────────────────────────────── */
+#finalresult {
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  line-height: 1.6;
+  min-height: 0;
+  transition: all .3s ease;
+}
+
+#finalresult:not(:empty) {
+  background: linear-gradient(135deg, rgba(255,61,107,.08), rgba(255,61,107,.03));
+  border: 1.5px solid rgba(255,61,107,.25);
+  border-left: 4px solid var(--accent-2);
+  animation: slideIn .4s .08s cubic-bezier(.22,1,.36,1) both;
+}
+
+#finalresult b { color: var(--text); font-weight: 700; }
+#finalresult i { color: var(--accent-3); font-style: normal; font-weight: 700; }
+#finalresult u { text-decoration: none; color: var(--text-muted); }
+#finalresult div { margin-top: 6px; }
+
+/* ─── Score Pulse Animation (win state) ─────────────────────────────── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--glow-red); }
+  50%       { box-shadow: 0 0 36px rgba(255,61,107,.7); }
+}
+
+/* ─── Footer ────────────────────────────────────────────────────────── */
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 22px 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+footer div,
+footer Div {
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+footer div:first-child {
+  color: var(--accent-1);
+  font-weight: 700;
+  opacity: .7;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-1); }
+
+/* ─── Selection ─────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(0,229,255,.25);
+  color: var(--text);
+}
+button#endbtn {
+  position: relative;
+  width: 100%;
+  padding: 16px 24px;
+  background: transparent;
+  border: 2px solid var(--accent-1);
+  border-radius: var(--radius);
+  color: var(--accent-1);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: .18em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color .25s, box-shadow .25s;
+}
+
+button#endbtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-1);
+  transform: translateY(100%);
+  transition: transform .28s cubic-bezier(.22,1,.36,1);
+  z-index: 0;
+}
+
+button#endbtn span,
+button#startbtn {
+  position: relative;
+  z-index: 1;
+}
+
+button#endbtn:hover {
+  color: var(--bg);
+  box-shadow: var(--glow-cyan);
+}
+
+button#endbtn:hover::before {
+  transform: translateY(0);
+}
+
+button#endbtn:active {
+  transform: scale(.98);
+}
